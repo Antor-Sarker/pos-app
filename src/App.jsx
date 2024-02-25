@@ -58,6 +58,7 @@ function App() {
     <div className="grid grid-cols-2">
       <Cart
         cartData={cartData}
+        setCartData={setCartData}
         handelCartItem={handelCartItem}
       />
 

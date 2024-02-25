@@ -22,8 +22,6 @@ export default function Products({ productsData, handelAddToCart }) {
 
   const data = isFilter? filterData : productsData
 
-  console.log(data)
-
   function handelSearch(key){
     setIsFilter(true)
     const foundData = productsData.filter(item=> item.name.toLocaleLowerCase().includes(key.toLocaleLowerCase()))

@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 function Item({ data, handelCartItem }) {
-  const { id, name, price, count } = data;
+  const { id, name, price, count } = data
   return (
     <div className="w-full flex">
       <PencilSquareIcon className="h-6 w-6 mx-3 my-2" />
