@@ -52,11 +52,7 @@ function App() {
       })
       setCartData(updatedCart)
     }
-
-
   }
-
-  console.log(cartData);
 
   return (
     <div className="grid grid-cols-2">

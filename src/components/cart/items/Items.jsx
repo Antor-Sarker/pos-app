@@ -9,9 +9,9 @@ import {
 function Item({ data, handelCartItem }) {
   const { id, name, price, count } = data;
   return (
-    <div className="flex">
+    <div className="w-full flex">
       <PencilSquareIcon className="h-6 w-6 mx-3 my-2" />
-      <div className="w-10/12 flex justify-between border border-spacing-1 rounded border-[#e5e7ea]">
+      <div className="w-full grid grid-cols-4 border border-spacing-1 rounded border-[#e5e7ea]">
         <div className="mx-1 my-2">{name}</div>
         <div className="mx-1 my-2">${price}</div>
         <div className="flex my-2">
@@ -37,8 +37,8 @@ function Item({ data, handelCartItem }) {
 
 export default function Items({ cartData, handelCartItem }) {
   return (
-    <div className="w-full pt-1 flex text-[#778591] justify-center">
-      <div>
+    <div className="pt-1 flex text-[#778591]">
+      <div className="w-full">
         {cartData.map((itemInfo) => (
           <Item
             key={itemInfo.id}

@@ -9,7 +9,7 @@ export default function Cart({cartData,handelCartItem}) {
       <Navbar />
       <Items cartData={cartData} handelCartItem={handelCartItem}/>
        
-      <Calculate />
+      <Calculate cartData={cartData}/>
     </div>
   );
 }

@@ -1,35 +1,40 @@
+/* eslint-disable react/prop-types */
 import { CalculatorIcon, HandRaisedIcon, WalletIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import cartCalculate from "../../../utils/cartCalculate";
 
-export default function Calculate() {
+export default function Calculate({cartData}) {
+
+  const {subTotal, tax, shipping, countProducts, total} = cartCalculate(cartData)
+
   return (
     <>
       <div className="relative mt-10">
         <div className="w-2/5 absolute right-3 flex flex-col">
           <div className="flex justify-between border-b-2 border-[#e6e9ec]">
             <div className="text-[#8996a0]">Sub Total</div>
-            <div className="text-[#333333]">$5025.00</div>
+            <div className="text-[#333333]">${subTotal}</div>
           </div>
           <div className="flex justify-between border-b-2 border-[#e6e9ec]">
             <div className="text-[#8996a0]">TAX</div>{" "}
-            <div className="text-[#333333]">$25.500</div>
+            <div className="text-[#333333]">${tax}</div>
           </div>
           <div className="flex justify-between border-b-2 border-[#e6e9ec]">
             <div className="text-[#8996a0]">Shipping</div>{" "}
-            <div className="text-[#333333]">$5.10</div>
+            <div className="text-[#333333]">${shipping}</div>
           </div>
           <div className="flex justify-between border-b-2 border-[#e6e9ec]">
             <div className="text-[#3674d9]">Discount on Cart</div>{" "}
-            <div className="text-[#333333]">$10.00</div>
+            <div className="text-[#333333]">$00.00</div>
           </div>
         </div>
       </div>
 
       <div className="w-full grid grid-cols-2 relative top-40 p-5 mx-2 text-[#3674d9] bg-[#e1eaf9] rounded">
-        <div>Products Count(13)</div>
+        <div>Products Count ({countProducts})</div>
 
         <div className="flex justify-around text-xl">
           <div>Total</div>
-          <div>$5005.50</div>
+          <div>${total}</div>
         </div>
       </div>
       
