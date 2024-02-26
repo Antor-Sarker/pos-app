@@ -6,8 +6,10 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/solid";
 
+//Cart Item
 function Item({ data, handelCartItem }) {
-  const { id, name, price, count } = data
+  const { id, name, price, count } = data;
+
   return (
     <div className="w-full flex">
       <PencilSquareIcon className="h-6 w-6 mx-3 my-2" />
@@ -29,16 +31,17 @@ function Item({ data, handelCartItem }) {
         <div className="mx-1 my-2">${price * count}</div>
       </div>
       <button onClick={() => handelCartItem({ type: "delete", id })}>
-        <TrashIcon className="h-6 w-6 mx-3 my-2 text-[#e55c57]" />
+        <TrashIcon className="h-6 w-6 mx-3 my-2 text-[#e55c57] hover:text-red-700 hover:h-7 hover:w-7" />
       </button>
     </div>
   );
 }
 
+// Cart Item List
 export default function Items({ cartData, handelCartItem }) {
   return (
     <div className="pt-1 flex text-[#778591]">
-      <div className="w-full">
+      <div className="w-full h-52 overflow-y-scroll scroll-smooth">
         {cartData.map((itemInfo) => (
           <Item
             key={itemInfo.id}

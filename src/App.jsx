@@ -12,7 +12,8 @@ function App() {
       .then((data) => setProductsData(data));
   }, []);
 
-  function handelAddToCart({id,name,price}) {
+  //Adding to Cart from Product List
+  function handelAddToCart({ id, name, price }) {
     const cartItem = {
       id,
       name,
@@ -32,40 +33,37 @@ function App() {
     } else setCartData([...cartData, cartItem]);
   }
 
-  function handelCartItem({type,id}){
-    
-    if(type==='delete'){
-      const updatedCart = cartData.filter(item=>item.id!==id)
-      setCartData(updatedCart)
-    }
-    else if(type==='plus'){
-      const updatedCart = cartData.map(item=>{
-        if(item.id===id) return {...item, count:item.count+1}
-        else return item
-      })
-      setCartData(updatedCart)
-    }
-    else {
-      const updatedCart = cartData.map(item=>{
-        if(item.id===id) return {...item, count: item.count-1}
-        else return item
-      })
-      setCartData(updatedCart)
+  //Delete, Add, Subtract from existed Cart Item
+  function handelCartItem({ type, id }) {
+    if (type === "delete") {
+      if (confirm("will be Delete from Cart?")) {
+        const updatedCart = cartData.filter((item) => item.id !== id);
+        setCartData(updatedCart);
+      } else return;
+    } else if (type === "plus") {
+      const updatedCart = cartData.map((item) => {
+        if (item.id === id) return { ...item, count: item.count + 1 };
+        else return item;
+      });
+      setCartData(updatedCart);
+    } else {
+      const updatedCart = cartData.map((item) => {
+        if (item.id === id) return { ...item, count: item.count - 1 };
+        else return item;
+      });
+      setCartData(updatedCart);
     }
   }
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:md:grid-cols-2">
       <Cart
         cartData={cartData}
         setCartData={setCartData}
         handelCartItem={handelCartItem}
       />
 
-      <Products
-        productsData={productsData}
-        handelAddToCart={handelAddToCart}
-        />
+      <Products productsData={productsData} handelAddToCart={handelAddToCart} />
     </div>
   );
 }

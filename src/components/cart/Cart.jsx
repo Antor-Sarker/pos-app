@@ -7,10 +7,14 @@ export default function Cart({ cartData, setCartData, handelCartItem }) {
   return (
     <div className="">
       <Navbar />
-      {cartData.length === 0 && <div className="w-full pb-5 text-2xl text-center text-sky-200">Please add an item</div>}
+      {cartData.length === 0 && (
+        <div className="w-full text-2xl pt-10 text-center text-[#5f6dc5]">
+          Please add an item
+        </div>
+      )}
 
       <Items cartData={cartData} handelCartItem={handelCartItem} />
-      <Calculate cartData={cartData} setCartData={setCartData}/>
+      <Calculate cartData={cartData} setCartData={setCartData} />
     </div>
   );
 }
